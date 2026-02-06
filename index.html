@@ -119,8 +119,8 @@ canvas {
 
 <body>
 
-<audio autoplay loop>
-  <source src="song.mp3" type="audio/mpeg">
+<audio id="bgMusic" loop>
+    <source src="music/love_me_like_you_do_instrumental.m4a" type="audio/mp4">
 </audio>
 
 <canvas id="confetti"></canvas>
@@ -173,8 +173,16 @@ noBtn.onclick = () => {
 };
 
 /* YES CLICK */
+const bgMusic = document.getElementById("bgMusic");
+
 yesBtn.onclick = () => {
   yesBtn.style.display = noBtn.style.display = "none";
+
+  bgMusic.volume = 0.5;   // soft romantic volume
+  bgMusic.play().catch(err => {
+    console.log("Music blocked:", err);
+  });
+
   startConfetti();
   gallery.style.display = "grid";
   envelope.style.display = "block";
