@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Rasssuuuu 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Comic Sans MS', cursive;
+  background: linear-gradient(180deg, #fde2e4, #e8f8f5);
+  min-height: 100vh;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+/* MUSIC */
+audio { display: none; }
+
+/* CARD */
+.card {
+  background: #fffaf3;
+  border-radius: 32px;
+  padding: 45px;
+  width: 95%;
+  max-width: 580px;
+  margin: 40px auto;
+  box-shadow: 0 30px 70px rgba(255,150,170,.35);
+}
+
+/* HEADINGS */
+h1 { color: #ff6f91; font-size: 34px; }
+.subtitle { color: #777; font-size: 18px; }
+
+/* BUTTONS */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 30px;
+}
+button {
+  border: none;
+  border-radius: 45px;
+  padding: 18px 34px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all .35s ease;
+}
+#yesBtn { background: #ff6f91; color: white; font-size: 22px; }
+#noBtn { background: #f3f3f3; color: #555; }
+
+/* GALLERY */
+.gallery {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 30px;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 20px;
+  border: 4px solid #ffd6e0;
+}
+
+/* ENVELOPE */
+.envelope {
+  margin: 40px auto 0;
+  width: 220px;
+  height: 150px;
+  background: #ffe4ec;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(255,120,150,.3);
+}
+.envelope:hover { transform: scale(1.05); }
+.envelope span { font-size: 40px; display: block; margin-top: 30px; }
+.envelope p { color: #ff4d6d; }
+
+/* LETTER */
+.letter {
+  display: none;
+  background: #fffaf3;
+  padding: 30px;
+  border-radius: 22px;
+  margin-top: 30px;
+  box-shadow: 0 25px 50px rgba(0,0,0,.15);
+  font-size: 18px;
+  line-height: 1.7;
+  color: #555;
+  white-space: pre-wrap;
+}
+
+/* GLOW WORDS */
+.glow {
+  color: #ff4d6d;
+  font-weight: 600;
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 5px #ffb3c6; }
+  to { text-shadow: 0 0 14px #ff4d6d; }
+}
+
+/* CONFETTI */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<canvas id="confetti"></canvas>
+
+<div class="card">
+  <h1>Will you be my Valentine? 💖</h1>
+  <div class="subtitle">A little love story, written just for us 💫</div>
+
+  <div class="buttons">
+    <button id="yesBtn">Yes 💞</button>
+    <button id="noBtn">No 😶</button>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="gallery" id="gallery">
+    <img src="images\white_dinner.png">
+    <img src="images\egg_roll_shop.png">
+    <img src="images\ooty_train.png">
+  </div>
+
+  <!-- ENVELOPE -->
+  <div class="envelope" id="envelope" style="display:none;">
+    <span>💌</span>
+    <p>One last thing…</p>
+  </div>
+
+  <!-- LETTER -->
+  <div class="letter" id="letter"></div>
+</div>
+
+<script>
+/* NO BUTTON LOGIC */
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const gallery = document.getElementById("gallery");
+const envelope = document.getElementById("envelope");
+const letter = document.getElementById("letter");
+
+const noTexts = [
+ "No 😶","Are you sure? 🤍","Think again 🌸","Don’t do this 🥺",
+ "What if we try? ✨","I’ll wait 💞","Pleaseeee 💖"
+];
+let noClicks = 0;
+
+noBtn.onclick = () => {
+  noClicks++;
+  noBtn.textContent = noTexts[Math.min(noClicks, noTexts.length - 1)];
+  yesBtn.style.fontSize = 22 + noClicks * 4 + "px";
+  noBtn.style.fontSize = Math.max(18 - noClicks * 1.5, 12) + "px";
+};
+
+/* YES CLICK */
+yesBtn.onclick = () => {
+  yesBtn.style.display = noBtn.style.display = "none";
+  startConfetti();
+  gallery.style.display = "grid";
+  envelope.style.display = "block";
+};
+
+/* LETTER TEXT (PLAIN TEXT ONLY) */
+const letterText = `
+Hey Rasssuuuu 💖
+
+It’s been more than a year with you…
+and honestly, I don’t know where the time went.
+Somewhere between our laughs, our talks, and our quiet moments,
+I lost track of days — because life with you just flows 🌷
+
+I’ve loved you every minute,
+every second of this past year,
+and I promise I’ll keep loving you —
+today, tomorrow, and till my very last breath, my Swetuuu 🫶
+
+I can’t wait for:
+
+more movie nights together (yes, I’ll try not to fall asleep 😌),
+
+more badminton games filled with laughs and competition 🏸,
+
+more DSA sessions side by side — struggling, learning, growing together 💻💖.
+
+Our evening walks…
+they don’t feel like just walks.
+They feel like mental recovery,
+like everything slows down when I’m with you 🌙✨
+
+I’ll keep bringing you flowers —
+so be ready for them 🌸🌼🌹
+again and again… just like my love for you.
+
+Thank you for being my comfort,
+my happiness,
+my favorite person.
+
+I love you so, so much 💖
+Always yours.
+`;
+
+/* ENVELOPE CLICK */
+envelope.onclick = () => {
+  envelope.style.display = "none";
+  letter.style.display = "block";
+  typeLetter();
+};
+
+/* TYPEWRITER */
+function typeLetter() {
+  const words = letterText.split(" ");
+  let i = 0;
+  const interval = setInterval(() => {
+    letter.innerHTML += words[i] + " ";
+    i++;
+    if (i >= words.length) {
+      clearInterval(interval);
+
+      // Apply glow AFTER typing
+      letter.innerHTML = letter.innerHTML
+        .replace("Rasssuuuu", `<span class="glow">Rasssuuuu</span>`)
+        .replace("Swetuuu", `<span class="glow">Swetuuu</span>`)
+        .replace("I love you", `<span class="glow">I love you</span>`);
+    }
+  }, 140);
+}
+
+/* CONFETTI */
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth; canvas.height = innerHeight;
+
+function startConfetti() {
+  const pieces = Array.from({length:150},() => ({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*6+4,
+    c: `hsl(${Math.random()*360},100%,75%)`
+  }));
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.c;
+      ctx.fill();
+      p.y+=2;
+      if(p.y>canvas.height)p.y=-10;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+</script>
+
+</body>
+</html>
